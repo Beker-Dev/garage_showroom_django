@@ -8,5 +8,6 @@ class VehiclesViewSet(ReadOnlyModelViewSet):
     queryset = Vehicle.objects.get_active()
     serializer_class = VehicleSerializer
     http_method_names = ['get', 'options', 'head']
+    pagination_class = PageNumberPagination
 
 

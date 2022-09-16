@@ -3,6 +3,10 @@ from django.contrib import admin
 from vehicles.models import Vehicle
 
 
+class VehicleAdminInline(admin.TabularInline):
+    ...
+
+
 @admin.register(Vehicle)
 class VehicleAdmin(admin.ModelAdmin):
     list_display = [
@@ -17,18 +21,24 @@ class VehicleAdmin(admin.ModelAdmin):
         'engine_type',
         'automatic_transmission',
         'gears',
-        'type'
+        'type',
+        'is_active'
     ]
     list_display_links = [
         'id',
         'model'
     ]
     list_filter = [
+        'model',
         'model__brand',
         'is_new',
         'fuel',
         'engine',
         'engine_type',
         'automatic_transmission',
-        'type'
+        'type',
+        'is_active'
     ]
+    list_editable = ['is_active']
+    list_per_page = 12
+    ordering = ['-id']
