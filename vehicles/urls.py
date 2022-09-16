@@ -1,8 +1,10 @@
 from django.urls import path
 from . import views
-
+from rest_framework.routers import SimpleRouter
 
 app_name = 'vehicles'
-urlpatterns = [
-    path('', views.api.index, name='index'),
-]
+
+router = SimpleRouter()
+router.register('api/v1', views.api.VehiclesViewSet, basename='api-v1')
+
+urlpatterns = router.urls
