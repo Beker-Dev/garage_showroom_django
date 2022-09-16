@@ -15,7 +15,7 @@ class VehicleSerializer(ModelSerializer):
             'is_new',
             'fuel',
             'engine',
-            'is_turbo',
+            'engine_type',
             'automatic_transmission',
             'gears',
             'type'
