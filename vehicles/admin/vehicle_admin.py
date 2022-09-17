@@ -3,10 +3,6 @@ from django.contrib import admin
 from vehicles.models import Vehicle
 
 
-class VehicleAdminInline(admin.TabularInline):
-    ...
-
-
 @admin.register(Vehicle)
 class VehicleAdmin(admin.ModelAdmin):
     list_display = [
