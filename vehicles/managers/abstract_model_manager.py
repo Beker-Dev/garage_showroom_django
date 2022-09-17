@@ -2,11 +2,23 @@ from django.db.models import Manager
 
 
 class AbstractModelManager(Manager):
+    def __get_active_base(self):
+        return self.filter(is_active=True)
+
+    def __ordering(self, qs):
+        return qs.order_by('-id')
+
     def get_active_vehicles(self):
-        return self.filter(is_active=True).select_related('model', 'model__brand')
+        return self.__ordering(
+            self.__get_active_base().select_related('model', 'model__brand')
+        )
 
     def get_active_models(self):
-        return self.filter(is_active=True).select_related('brand')
+        return self.__ordering(
+            self.__get_active_base().select_related('brand')
+        )
 
     def get_active_brands(self):
-        return self.filter(is_active=True)
+        return self.__ordering(
+            self.__get_active_base()
+        )
