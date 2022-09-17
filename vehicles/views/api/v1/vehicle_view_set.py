@@ -5,9 +5,7 @@ from rest_framework.pagination import PageNumberPagination
 
 
 class VehiclesViewSet(ReadOnlyModelViewSet):
-    queryset = Vehicle.objects.get_active()
+    queryset = Vehicle.objects.get_active_vehicles()
     serializer_class = VehicleSerializer
-    http_method_names = ['get', 'options', 'head']
     pagination_class = PageNumberPagination
-
-
+    http_method_names = ['get', 'options', 'head']
