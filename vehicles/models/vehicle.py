@@ -6,6 +6,7 @@ from vehicles.utils.engine import Engine
 from vehicles.utils.engine_type import EngineType
 from vehicles.models import Model
 from django.db import models
+from vehicles.models import Image
 
 
 class Vehicle(AbstractModel):
@@ -21,6 +22,7 @@ class Vehicle(AbstractModel):
     gears = models.IntegerField()
     automatic_transmission = models.BooleanField(default=False)
     type = models.CharField(max_length=255, choices=Type.choices, default=Type.CAR)
+    images = models.ManyToManyField(Image)
 
     def __str__(self):
         return self.model.name

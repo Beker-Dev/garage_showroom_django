@@ -1,6 +1,7 @@
 import rest_framework.pagination
 from django.contrib import admin
 from vehicles.models import Vehicle
+from vehicles.admin import ImageInline
 
 
 @admin.register(Vehicle)
@@ -38,3 +39,5 @@ class VehicleAdmin(admin.ModelAdmin):
     list_editable = ['is_active']
     list_per_page = 12
     ordering = ['-id']
+    inlines = [ImageInline]
+    exclude = ['images']
