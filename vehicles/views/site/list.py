@@ -3,9 +3,7 @@ from vehicles.models import Vehicle
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-class List(LoginRequiredMixin, ListView):
-    login_url = 'users:login'
-    redirect_field_name = 'next'
+class List(ListView):
     model = Vehicle
     context_object_name = 'vehicles'
     template_name = 'vehicles/home.html'

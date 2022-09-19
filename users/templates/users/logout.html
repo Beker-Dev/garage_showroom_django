@@ -1,5 +1,5 @@
 <form action="{% url 'users:logout' %}" method="POST">
     {% csrf_token %}
 
-    <input type="submit" value="Logout">
+    <button type="submit" class="btn btn-primary-outline nav-link">Logout</button>
 </form>
