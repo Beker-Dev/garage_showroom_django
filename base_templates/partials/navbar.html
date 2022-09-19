@@ -5,13 +5,18 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{% url 'vehicles:list' %}">Home</a>
                 </li>
-                <li class="nav-item">
-                    {% if request.user.is_authenticated %}
+                {% if request.user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">{{ request.user.username|title }}</a>
+                    </li>
+                    <li class="nav-item">
                         {% include 'users/logout.html' %}
-                    {% else %}
-                        <a class="nav-link" href="{% url 'users:login' %}">Login</a>
-                    {% endif %}
-                </li>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{% url 'users:login' %}">Login</a>
+                    </li>
+                {% endif %}
             </ul>
             <form class="d-flex">
                 <input class="form-control me-2 " type="search" placeholder="Search" aria-label="Search">
