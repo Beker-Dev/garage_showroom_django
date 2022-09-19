@@ -9,11 +9,13 @@
         {% csrf_token %}
 
         {% for field in form %}
-            <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-            {{ field }}
-            {{ field.errors }}
+            <div class="mb-3">
+                <label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
+                {{ field.errors }}
+            </div>
         {% endfor %}
 
-        <input type="submit" value="Login">
+        <button type="submit" class="btn btn-primary">Login</button>
     </form>
 {% endblock %}

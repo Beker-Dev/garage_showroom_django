@@ -2,6 +2,7 @@ from django.views import View
 from django.shortcuts import render, redirect
 from users.forms import LoginForm
 from django.contrib.auth import login, authenticate
+from django.contrib import messages
 
 
 class Login(View):
@@ -27,4 +28,5 @@ class Login(View):
                 login(self.request, authenticated_user)
                 return redirect('vehicles:list')
 
+        messages.error(self.request, 'Invalid username or password')
         return redirect('users:login')
