@@ -1,6 +1,5 @@
 from django.views import View
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
 from users.forms import LoginForm
 from django.contrib.auth import login, authenticate
 
@@ -8,7 +7,7 @@ from django.contrib.auth import login, authenticate
 class Login(View):
     def get(self, *args, **kwargs):
         if self.request.user.is_authenticated:
-            return render(self.request, 'vehicles/home.html')
+            return redirect('vehicles:list')
         else:
             form = LoginForm()
             return render(self.request, 'users/login.html', {'form': form})
@@ -23,9 +22,9 @@ class Login(View):
             authenticated_user = authenticate(
                 username=username, password=password
             )
+
             if authenticated_user is not None:
                 login(self.request, authenticated_user)
-                return HttpResponse(f"logged as: {self.request.user}")
+                return redirect('vehicles:list')
 
-        print('no')
         return redirect('users:login')
