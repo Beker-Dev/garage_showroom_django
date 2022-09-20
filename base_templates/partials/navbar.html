@@ -1,13 +1,22 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-warning mb-5">
+<nav class="navbar navbar-expand-lg navbar-light bg-warning">
     <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'vehicles:list' %}">Garage Showroom</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{% url 'vehicles:list' %}">Home</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'vehicles:about' %}">About</a>
+                </li>
                 {% if request.user.is_authenticated %}
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">{{ request.user.username|title }}</a>
+                        <a class="nav-link active" href="{% url 'users:detail' request.user.username %}"
+                        >{{ request.user.username|title }}</a>
                     </li>
                     <li class="nav-item">
                         {% include 'users/logout.html' %}

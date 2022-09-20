@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ request.user|title }} |
+{% endblock %}
+
+{% block content %}
+    User Page
+    {% include 'users/logout.html' %}
+{% endblock %}

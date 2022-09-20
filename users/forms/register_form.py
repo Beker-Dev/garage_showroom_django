@@ -36,7 +36,7 @@ class RegisterForm(forms.ModelForm):
     email = forms.EmailField(
         widget=forms.EmailInput(
             attrs={
-                'placeholder': 'email@example.com',
+                'placeholder': 'Email@example.com',
                 'class': 'form-control'
             }
         )
