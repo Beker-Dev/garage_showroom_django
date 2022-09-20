@@ -1,13 +1,12 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    Login |
+    Register |
 {% endblock %}
 
 {% block content %}
-    <form method="POST" action="{% url 'users:login' %}">
+    <form method="POST" action="{% url 'users:register' %}">
         {% csrf_token %}
-
         {% for field in form %}
             <div class="mb-3">
                 <label class="form-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
@@ -16,7 +15,6 @@
             </div>
         {% endfor %}
 
-        <button type="submit" class="btn btn-warning">Login</button>
-        <a class="btn btn-warning" href="{% url 'users:register' %}">Register New Account</a>
+        <button type="submit" class="btn btn-warning">Register</button>
     </form>
 {% endblock %}
