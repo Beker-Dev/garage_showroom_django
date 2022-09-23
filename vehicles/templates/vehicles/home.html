@@ -5,5 +5,9 @@
 {% endblock %}
 
 {% block content %}
-    Home Page
+    {% for vehicle in vehicles %}
+        {% include 'vehicles/partials/vehicle.html' %}
+    {% empty %}
+        <p>No Vehicles</p>
+    {% endfor %}
 {% endblock %}

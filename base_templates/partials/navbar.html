@@ -18,9 +18,6 @@
                         <a class="nav-link active" href="{% url 'users:detail' request.user.pk %}"
                         >{{ request.user.username|title }}</a>
                     </li>
-                    <li class="nav-item">
-                        {% include 'users/logout.html' %}
-                    </li>
                 {% else %}
                     <li class="nav-item">
                         <a class="nav-link active" href="{% url 'users:login' %}">Login</a>
