@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'debug_toolbar',
     'rest_framework',
     'rest_framework_simplejwt',
+    'django.contrib.humanize',
     'vehicles',
     'users'
 ]
