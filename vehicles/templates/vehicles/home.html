@@ -10,15 +10,35 @@
             <div class="col">
                 <div class="card h-100">
                     {% include 'vehicles/partials/carousel_images.html' %}
-                    <div class="card-body">
-                        <h5 class="card-title">{{ vehicle.model.brand.name }} {{ vehicle.model.name }}</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                        <a href="#{{ vehicle.id }}" class="btn btn-warning">See more</a>
+                    <div class="card-header">
+                        <h5 class="card-title text-center">{{ vehicle.model.brand.name }} {{ vehicle.model.name }}</h5>
                     </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <i class="fa-solid fa-money-check-dollar"></i>
+                                {{ vehicle.price|floatformat:2 }}
+                            </li>
+                            <li class="list-group-item">
+                                <i class="fa-solid fa-gauge"></i>
+                                {{ vehicle.engine }} {{ vehicle.engine_type }}
+                            </li>
+                            <li class="list-group-item">
+                                <i class="fa-solid fa-road"></i>
+                                {{ vehicle.mileage }}
+                            </li>
+                        </ul>
+                    </div>
+                    <a href="#{{ vehicle.id }}" class="btn btn-warning">See more</a>
                 </div>
             </div>
         {% endfor %}
     </div>
     {% include 'vehicles/partials/pagination.html' %}
+
+    <style>
+        li{
+            list-style: none;
+        }
+    </style>
 {% endblock %}

@@ -7,6 +7,6 @@ class List(ListView):
     model = Vehicle
     context_object_name = 'vehicles'
     template_name = 'vehicles/home.html'
-    paginate_by = 12
+    paginate_by = 20
     ordering = ['-id']
     queryset = Vehicle.objects.get_active_vehicles()

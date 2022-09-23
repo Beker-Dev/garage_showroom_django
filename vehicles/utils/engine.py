@@ -20,4 +20,5 @@ class Engine(TextChoices):
     V10 = 'V10', 'V10'
     V12 = 'V12', 'V12'
     W16 = 'W16', 'W16'
+    BATTERY = 'Battery', 'Battery'
     CUSTOM = 'Custom', 'Custom'
