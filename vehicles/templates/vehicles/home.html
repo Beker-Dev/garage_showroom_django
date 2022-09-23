@@ -21,16 +21,16 @@
                                 ${{ vehicle.price|floatformat:2|intcomma }}
                             </li>
                             <li class="list-group-item">
-                                <i class="fa-solid fa-gauge"></i>
-                                {{ vehicle.engine }} {{ vehicle.engine_type }}
-                            </li>
-                            <li class="list-group-item">
                                 <i class="fa-solid fa-road"></i>
                                 {{ vehicle.mileage|intcomma }} mi
                             </li>
+                            <li class="list-group-item">
+                                <i class="fa-solid fa-gauge"></i>
+                                {{ vehicle.engine }} {{ vehicle.engine_type }}
+                            </li>
                         </ul>
                     </div>
-                    <a href="#{{ vehicle.id }}" class="btn btn-warning">See more</a>
+                    <a href="{% url 'vehicles:detail' vehicle.id %}" class="btn btn-warning">See more</a>
                 </div>
             </div>
         {% endfor %}

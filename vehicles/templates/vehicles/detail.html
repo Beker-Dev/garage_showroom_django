@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block title %}
+    {{ vehicle.model.brand.name }} {{ vehicle.model.name }} |
+{% endblock %}
+
+{% block content %}
+    <div class="card mb-3 text-dark">
+        {% include 'vehicles/partials/carousel_images.html' %}
+        <div class="card-header">
+            <h5 class="card-title text-center">{{ vehicle.model.brand.name }} {{ vehicle.model.name }}</h5>
+        </div>
+        <div class="card-body">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <i class="fa-solid fa-money-check-dollar"></i>
+                    ${{ vehicle.price|floatformat:2|intcomma }}
+                </li>
+                <li class="list-group-item">
+                    <i class="fa-solid fa-road"></i>
+                    {{ vehicle.mileage|intcomma }} mi
+                </li>
+                <li class="list-group-item">
+                    <i class="fa-solid fa-gauge"></i>
+                    {{ vehicle.engine }} {{ vehicle.engine_type }}
+                </li>
+                <li class="list-group-item">
+                    <i class="fa-solid fa-gas-pump"></i>
+                    {{ vehicle.fuel }}
+                </li>
+                <li class="list-group-item">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    {{ vehicle.year }}
+                </li>
+                <li class="list-group-item">
+                    <i class="fa-solid fa-bolt"></i>
+                    {% if vehicle.is_new %}New{% else %}Used{% endif %}
+                </li>
+                <li class="list-group-item">
+                    <i class="fa-solid fa-gears"></i>
+                    {% if vehicle.automatic_transmission %}Automatic{% else %}Manual{% endif %}
+                    {{ vehicle.gears }} Gears
+                </li>
+
+            </ul>
+        </div>
+        <div class="card-footer">
+            <p class="list-group-item">
+                {{ vehicle.description }}
+            </p>
+        </div>
+    </div>
+
+{#    <style>#}
+{#        .carousel-item {#}
+{#            height: 30rem;#}
+{#        }#}
+{#    </style>#}
+{% endblock %}

@@ -4,14 +4,15 @@
             <button type="button" data-bs-target="#carouselExampleIndicators{{ vehicle.id }}" data-bs-slide-to=
                     "{{ forloop.counter0 }}"
                     {% if forloop.first %}class="active" aria-current="true"{% endif %}
-                     aria-label="Slide {{ forloop.counter0 }}">
+                    aria-label="Slide {{ forloop.counter0 }}">
             </button>
         {% endfor %}
     </div>
     <div class="carousel-inner">
         {% for image in vehicle.image_set.all %}
             <div class="carousel-item {% if forloop.first %}active{% endif %}">
-                <a href="#{{ vehicle.id }}"><img src="{{ image.image.url }}" class="d-block w-100" alt="..."></a>
+                <a href="{% url 'vehicles:detail' vehicle.id %}"><img src="{{ image.image.url }}" class="d-block
+                w-100" alt="..."></a>
             </div>
         {% endfor %}
     </div>
@@ -26,3 +27,4 @@
         <span class="visually-hidden">Next</span>
     </button>
 </div>
+
