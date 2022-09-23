@@ -1,9 +1,11 @@
-<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+<div id="carouselExampleIndicators{{ vehicle.id }}" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
         {% for _ in vehicle.image_set.all %}
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ forloop.counter0 }}"
-                    {% if forloop.first %}class="active"{% endif %}
-                    aria-current="true" aria-label="Slide {{ forloop.counter0 }}"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators{{ vehicle.id }}" data-bs-slide-to=
+                    "{{ forloop.counter0 }}"
+                    {% if forloop.first %}class="active" aria-current="true"{% endif %}
+                     aria-label="Slide {{ forloop.counter0 }}">
+            </button>
         {% endfor %}
     </div>
     <div class="carousel-inner">
@@ -13,12 +15,12 @@
             </div>
         {% endfor %}
     </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators{{ vehicle.id }}"
             data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
     </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators{{ vehicle.id }}"
             data-bs-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Next</span>
