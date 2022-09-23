@@ -10,7 +10,7 @@ class AbstractModelManager(Manager):
 
     def get_active_vehicles(self):
         return self.__ordering(
-            self.__get_active_base().select_related('model', 'model__brand')
+            self.__get_active_base().select_related('model', 'model__brand').prefetch_related('image_set')
         )
 
     def get_active_models(self):
