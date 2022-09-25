@@ -6,9 +6,8 @@ from vehicles.utils.functions import *
 
 @receiver(pre_save, sender=Vehicle)
 def pre_save_vehicle(instance, **kwargs):
-    old_imgs = None
     try:
-        old_imgs = Vehicle.objects.filter(pk=instance.id).first().image_set.all()
+        old_imgs = Vehicle.objects.get(pk=instance.id).image_set.all()
         new_imgs = instance.image_set.all()
 
         if old_imgs != new_imgs:

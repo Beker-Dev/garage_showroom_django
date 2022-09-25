@@ -3,7 +3,7 @@ from PIL import Image
 import os
 
 
-def resize_image(image, new_width=600) -> None:
+def resize_image(image, new_width=800) -> None:
     image_full_path = os.path.join(settings.MEDIA_ROOT, image.name)
     image_pillow = Image.open(image_full_path)
     original_width, original_height = image_pillow.size
@@ -17,7 +17,7 @@ def resize_image(image, new_width=600) -> None:
         new_image.save(
             image_full_path,
             optimize=True,
-            quality=50,
+            quality=70,
         )
         new_image.close()
         image.close()
