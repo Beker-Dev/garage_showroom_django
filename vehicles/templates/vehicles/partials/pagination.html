@@ -2,25 +2,31 @@
     <nav aria-label="pagination">
         <ul class="pagination g-4">
             {% if page_obj.has_previous %}
-                <a class="page-link" href="?page=1">&laquo;</a>
-                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">&lsaquo;</a>
+                <a class="page-link" href="?page=1&
+search={{ request.GET.search }}&type={{ request.GET.type }}">&laquo;</a>
+                <a class="page-link" href="?page={{ page_obj.previous_page_number }}&
+search={{ request.GET.search }}&type={{ request.GET.type }}">&lsaquo;</a>
             {% endif %}
 
             {% for num in page_obj.paginator.page_range %}
                 {% if page_obj.number == num %}
                     <li class="page-item active" aria-current="page">
-                        <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                        <a class="page-link" href="?page={{ num }}&
+search={{ request.GET.search }}&type={{ request.GET.type }}">{{ num }}</a>
                     </li>
                 {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
                     <li class="page-item">
-                        <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                        <a class="page-link" href="?page={{ num }}&
+search={{ request.GET.search }}&type={{ request.GET.type }}">{{ num }}</a>
                     </li>
                 {% endif %}
             {% endfor %}
 
             {% if page_obj.has_next %}
-                <a class="page-link page-item" href="?page={{ page_obj.next_page_number }}">&rsaquo;</a>
-                <a class="page-link page-item" href="?page={{ page_obj.paginator.num_pages }}">&raquo;</a>
+                <a class="page-link page-item" href="?page={{ page_obj.next_page_number }}&
+search={{ request.GET.search }}&type={{ request.GET.type }}">&rsaquo;</a>
+                <a class="page-link page-item" href="?page={{ page_obj.paginator.num_pages }}&
+search={{ request.GET.search }}&type={{ request.GET.type }}">&raquo;</a>
             {% endif %}
         </ul>
     </nav>
@@ -30,9 +36,11 @@
             background-color: #ffc107;;
             border-color: #ffc107;;
         }
+
         .page-link {
             color: #ffc107;
         }
+
         .pagination {
             margin-top: 0.5rem;
         }
