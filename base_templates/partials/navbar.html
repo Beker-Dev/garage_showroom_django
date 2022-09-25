@@ -29,8 +29,10 @@
                         Filters
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="{% url 'vehicles:list' %}?type=Car">Cars</a></li>
-                        <li><a class="dropdown-item" href="{% url 'vehicles:list' %}?type=Motorcycle">Motorcycles</a></li>
+                        <li><a class="dropdown-item" href="{% url 'vehicles:list' %}?search=
+{{ request.GET.search }}&type=Car">Cars</a></li>
+                        <li><a class="dropdown-item" href="{% url 'vehicles:list' %}?search=
+{{ request.GET.search }}&type=Motorcycle">Motorcycles</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
@@ -39,7 +41,8 @@
                 </li>
             </ul>
             <form class="d-flex">
-                <input class="form-control me-2 " type="search" placeholder="Search" aria-label="Search">
+                <input class="form-control me-2 " type="search" placeholder="Search" aria-label="Search" name="search"
+                       value="{{ request.GET.search }}">
                 <button class="btn btn-outline-dark" type="submit">Search</button>
             </form>
         </div>
