@@ -1,13 +1,11 @@
 <div id="carouselExampleIndicators{{ vehicle.id }}" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
-        {% for _ in vehicle.image_set.all %}
-            {% if image.image %}
+        {% for image in vehicle.image_set.all %}
                 <button type="button" data-bs-target="#carouselExampleIndicators{{ vehicle.id }}" data-bs-slide-to=
                         "{{ forloop.counter0 }}"
                         {% if forloop.first %}class="active" aria-current="true"{% endif %}
                         aria-label="Slide {{ forloop.counter0 }}">
                 </button>
-            {% endif %}
         {% endfor %}
     </div>
     <div class="carousel-inner">
