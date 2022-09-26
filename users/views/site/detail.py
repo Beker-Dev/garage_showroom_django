@@ -1,14 +1,15 @@
 from django.views.generic import DetailView
 from django.contrib.auth.models import User
 from django.shortcuts import redirect
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
-class Detail(DetailView):
+class Detail(LoginRequiredMixin, DetailView):
+    login_url = '/users/login/'
+    redirect_field_name = 'next'
     model = User
     template_name = 'users/detail.html'
     context_object_name = 'user'
 
-    def dispatch(self, *args, **kwargs):
-        if self.kwargs.get('pk') != self.request.user.pk:
-            return redirect('vehicles:list')
-        return super().dispatch(*args, **kwargs)
+    def get_object(self, *args, **kwargs):
+        return self.request.user

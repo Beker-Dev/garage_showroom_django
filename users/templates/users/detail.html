@@ -1,10 +1,41 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    {{ request.user|title }} |
+    {{ user|title }} |
 {% endblock %}
 
 {% block content %}
-    User Page
-    {% include 'users/logout.html' %}
+    <div class="card mb-3 text-dark">
+        <div class="card-header">
+            <h5 class="card-title text-center">{{ user|title }}'s Account</h5>
+        </div>
+        <div class="card-body">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <i class="fa-solid fa-id-card"></i>
+                    First Name: {{ user.first_name|title }}
+                </li>
+                <li class="list-group-item">
+                    <i class="fa-solid fa-address-card"></i>
+                    Last Name: {{ user.last_name|title }}
+                </li>
+                <li class="list-group-item">
+                    <i class="fa-solid fa-user"></i>
+                    Username: {{ user|title }}
+                </li>
+                <li class="list-group-item">
+                    <i class="fa-solid fa-envelope"></i>
+                    Email: {{ user.email }}
+                </li>
+            </ul>
+        </div>
+        <div class="card-footer">
+            <a class="btn btn-warning" href="#">
+                Edit Account
+            </a>
+            <a class="btn btn-warning" href="#">
+                Change Password
+            </a>
+        </div>
+    </div>
 {% endblock %}
