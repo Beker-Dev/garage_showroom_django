@@ -2,6 +2,7 @@ from django.views.generic import ListView
 from vehicles.models import Vehicle
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import Q
+from django.core.exceptions import FieldError
 
 
 class List(ListView):
@@ -16,7 +17,11 @@ class List(ListView):
         allowed_filters = ['type']
         for filter, value in self.request.GET.items():
             if filter in allowed_filters and value:
-                self.queryset = self.queryset.filter(**{filter: value})
+                try:
+                    self.queryset = self.queryset.filter(**{filter: value})
+                except FieldError:
+                    filter = f'model__{filter}'
+                    self.queryset = self.queryset.filter(**{filter: value})
         return self.queryset
 
     def check_search(self):

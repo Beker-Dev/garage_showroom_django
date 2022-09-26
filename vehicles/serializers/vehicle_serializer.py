@@ -21,5 +21,4 @@ class VehicleSerializer(serializers.ModelSerializer):
             'engine_type',
             'automatic_transmission',
             'gears',
-            'type'
         ]

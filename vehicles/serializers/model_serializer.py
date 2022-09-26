@@ -11,5 +11,6 @@ class ModelSerializer(serializers.ModelSerializer):
         fields = [
             'id',
             'name',
+            'type',
             'brand'
         ]

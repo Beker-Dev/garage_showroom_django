@@ -1,7 +1,6 @@
 from vehicles.models import AbstractModel
 from vehicles.utils.color import Color
 from vehicles.utils.fuel import Fuel
-from vehicles.utils.type import Type
 from vehicles.utils.engine import Engine
 from vehicles.utils.engine_type import EngineType
 from vehicles.models import Model
@@ -20,7 +19,6 @@ class Vehicle(AbstractModel):
     engine_type = models.CharField(max_length=255, choices=EngineType.choices, default=EngineType.ASPIRATED)
     gears = models.IntegerField()
     automatic_transmission = models.BooleanField(default=False)
-    type = models.CharField(max_length=255, choices=Type.choices, default=Type.CAR)
     description = models.TextField()
 
     def __str__(self):

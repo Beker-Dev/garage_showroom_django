@@ -18,7 +18,6 @@ class VehicleAdmin(admin.ModelAdmin):
         'engine_type',
         'automatic_transmission',
         'gears',
-        'type',
         'is_active'
     ]
     list_display_links = [
@@ -33,7 +32,6 @@ class VehicleAdmin(admin.ModelAdmin):
         'engine',
         'engine_type',
         'automatic_transmission',
-        'type',
         'is_active'
     ]
     list_editable = ['is_active']
