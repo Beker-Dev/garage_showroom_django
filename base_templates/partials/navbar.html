@@ -56,7 +56,7 @@
                     </ul>
                 </li>
             </ul>
-            <form class="d-flex">
+            <form class="d-flex" action="{% url 'vehicles:list' %}">
                 <input class="form-control me-2 " type="search" placeholder="Search" aria-label="Search" name="search"
                        value="{{ request.GET.search }}">
                 <button class="btn btn-outline-dark" type="submit">Search</button>
