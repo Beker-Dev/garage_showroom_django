@@ -8,7 +8,7 @@ class Register(CreateView):
     model = User
     template_name = 'users/register.html'
     form_class = RegisterForm
-    success_url = '/'
+    success_url = '/users/login'
 
     def dispatch(self, *args, **kwargs):
         if self.request.user.is_authenticated:
