@@ -1,4 +1,4 @@
-from django.db.models.signals import pre_save, pre_delete
+from django.db.models.signals import pre_delete
 from django.dispatch import receiver
 from .models import Vehicle
 from vehicles.utils.functions import remove_image
