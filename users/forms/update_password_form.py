@@ -1,4 +1,5 @@
 from django import forms
+from users.utils.form_utils import *
 
 
 class UpdatePasswordForm(forms.Form):
@@ -28,3 +29,14 @@ class UpdatePasswordForm(forms.Form):
             }
         )
     )
+
+    def clean(self):
+        password = self.cleaned_data.get('password')
+        new_password = self.cleaned_data.get('new_password')
+        new_password_confirm = self.cleaned_data.get('new_password_confirm')
+        validate_password(new_password)
+        compare_passwords(new_password, new_password_confirm)
+        if password == new_password:
+            raise ValidationError(
+                'Password and New Password cannot be equal', code='invalid'
+            )
