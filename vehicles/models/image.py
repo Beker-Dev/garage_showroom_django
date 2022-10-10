@@ -1,5 +1,6 @@
 from django.db import models
 from vehicles.models import Vehicle
+from vehicles.utils.functions import resize_image
 
 
 class Image(models.Model):
@@ -9,3 +10,7 @@ class Image(models.Model):
 
     def __str__(self):
         return self.image.name
+
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
+        resize_image(self.image)
