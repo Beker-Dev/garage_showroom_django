@@ -18,6 +18,6 @@
 
         <button type="submit" class="btn btn-warning">Login</button>
         <a class="btn btn-warning" href="{% url 'users:register' %}">Register New Account</a>
-        <a class="btn btn-warning" href="#">Forgot my password</a>
+        <a class="btn btn-warning" href="{% url 'users:forgot_password' %}">Forgot my password</a>
     </form>
 {% endblock %}
