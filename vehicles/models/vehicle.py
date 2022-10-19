@@ -5,7 +5,8 @@ from vehicles.utils.engine import Engine
 from vehicles.utils.engine_type import EngineType
 from vehicles.models import Model
 from django.db import models
-
+from datetime import datetime
+from django.core.exceptions import ValidationError
 
 class Vehicle(AbstractModel):
     color = models.CharField(max_length=255, choices=Color.choices, default=Color.RED)
@@ -23,3 +24,8 @@ class Vehicle(AbstractModel):
 
     def __str__(self):
         return self.model.name
+
+    def clean(self):
+        if not (len(str(self.year)) == 4 and 0 < self.year <= int(datetime.now().strftime("%Y"))):
+            raise ValidationError({'year': 'Invalid year'})
+        return super().clean()
